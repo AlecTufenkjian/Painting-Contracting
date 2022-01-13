@@ -1,0 +1,2535 @@
+/*
+ * Author       : jayleen_targetpainting
+ * Generated on : 21-Mar-2021 16:03:37
+ * Version      : 1.0
+ */
+ application "Painting & Contracting"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Detroit"
+ 	time format = "24-hr"
+	section Carpentry_Repairs
+	{
+		displayname= "Carpentry & Repairs"
+		icon = "objects-pipe"
+		form Add_Carpentry_Sub
+		{
+			displayname = "Add Carpentry Sub"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Area
+			(
+				type = picklist
+				values = {"Front", "Right", "Rear", "Left"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Floor
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "objects-pipe"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list Carpentry_Repairs_Report
+		{
+			displayName = "Carpentry & Repairs Report"
+   			hide = true
+			show all rows from Add_Carpentry_Sub    
+			(
+				Area
+				Floor
+				Description
+				Image
+			)
+			options
+			(
+				icon = "transportation-tractor"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Area
+							Floor
+							Description
+							Image
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Area
+							Floor
+							Description
+							Image
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Project_Specifications
+	{
+		displayname= "Project Specifications"
+		icon = "education-books-46"
+		form Project_Specifications
+		{
+			displayname = "Project Specifications"
+			success message = "Project Specification Added Successfully"
+			field alignment = left
+			Section4
+			(
+				type = section
+				displayname = "Section"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			plain
+			(
+    			type = plaintext
+				value = "<div><b><span class=\"size\" style=\"font-size: 24px\">Client Contact Information</span></b><br /></div>"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Section
+			(
+				type = section
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Primary_Contact
+			(
+    			type = name
+				displayname = "Primary Contact"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Secondary_Contact
+			(
+    			type = name
+				displayname = "Secondary Contact"
+     			prefix1
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name1
+     			(
+	     			 type = first_name
+	     			 displayname ="Name"
+     			) 
+     			last_name1
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix1
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+    			defaultcountry="us"
+	 			row = 2
+	 			column = 2   
+				width = medium
+				personal data = true
+			)
+			Phone_Number1
+			(
+    			type = phonenumber
+				displayname = "Phone"
+    			defaultcountry="us"
+	 			row = 2
+	 			column = 2   
+				width = medium
+				personal data = true
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 3
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Source_of_Lead
+			(
+    			type = text
+				displayname = "Source of Lead"
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+	 			row = 3
+	 			column = 2   
+				width = medium
+				personal data = true
+			)
+			Notes
+			(
+    			type = textarea
+				height = 300px
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+			Surface_Washing_Specifications
+			(
+				type = section
+				displayname = "Surface Washing Specifications"
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			plain1
+			(
+    			type = plaintext
+				value = "<div><b><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"size\" style=\"font-size: 32px\">​</span></span><span class=\"size\" style=\"font-size: 24px\">Surface Washing Specifications</span></b><br /></div>"
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Surface_Washing
+			(
+				type = list
+				displayname = "Surface Washing"
+				values = {"Full Primer coat", "Siding", "Trim, Soffits, Fascia", "Window & Door Trim", "Window Sashes", "Window Mullions", "Storm Windows", "Basement Windows", "Front Entry Doors", "Side & Rear Doors", "Screen/Storm Doors", "Door Thresholds", "Garage Doors", "Shutters", "Gutters", "Downspouts", "Bulkhead", "Chimney", "Entry Hand Rails", "Deck Railings", "Deck Lattice", "Screen Porch Trim", "Porch Floor", "Porch Ceiling", "Foundation", "Sheds", "Accessories"}
+				sortorder = ascending
+				height = 60px
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Section5
+			(
+				type = section
+				displayname = "Section"
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			plain2
+			(
+    			type = plaintext
+				value = "<div><br /></div><div><b><span class=\"size\" style=\"font-size: 24px\">Painting Specifications</span></b><br /></div><div><b><span class=\"size\" style=\"font-size: 24px\">​</span></b><br /></div>"
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Painting
+			(
+				type = grid
+				values  = Add_Painting_Sub.ID
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Section8
+			(
+				type = section
+				displayname = "Section"
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			Overall_Notes
+			(
+    			type = textarea
+				displayname = "Overall Notes"
+				height = 200px
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Painting_Specifications
+			(
+				type = grid
+				displayname = "Painting Specifications"
+				values  = Add_Surface_Sub.ID
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Miscellaneous_Painting
+			(
+				type = grid
+				displayname = "Miscellaneous Painting"
+				values  = Add_Surface_Sub.ID
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			Section7
+			(
+				type = section
+				displayname = "Section"
+	 			row = 10
+	 			column = 0   
+				width = medium
+			)
+			plain4
+			(
+    			type = plaintext
+				value = "<div><br /></div><div><b><span class=\"size\" style=\"font-size: 24px\">Carpentry &amp; Repairs</span></b><br /></div>"
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Section3
+			(
+				type = section
+				displayname = "Section"
+	 			row = 11
+	 			column = 0   
+				width = medium
+			)
+			Material
+			(
+				type = radiobuttons
+				values = {"Composite", "Wood"}
+				layout = 2
+	 			row = 11
+	 			column = 1   
+				width = medium
+			)
+			Carpentry
+			(
+				type = grid
+				values  = Add_Carpentry_Sub.ID
+	 			row = 12
+	 			column = 1   
+				width = medium
+			)
+			Section16
+			(
+				type = section
+				displayname = "Section"
+	 			row = 13
+	 			column = 0   
+				width = medium
+			)
+			Section6
+			(
+				type = section
+				displayname = "Section"
+	 			row = 14
+	 			column = 0   
+				width = medium
+			)
+			Quotations
+			(
+				type = picklist
+				values = {"ARE FULFILLED", "ARE NOT FULFILLED"}
+				initial value = "ARE NOT FULFILLED"
+	 			row = 14
+	 			column = 1   
+				width = medium
+			)
+			Section10
+			(
+				type = section
+				displayname = "Section"
+	 			row = 15
+	 			column = 0   
+				width = medium
+			)
+			Lines
+			(
+				type = radiobuttons
+				values = {"Yes", "No"}
+				initial value = "Yes"
+	 			row = 15
+	 			column = 1   
+				width = medium
+			)
+			Final_Painting_No
+			(
+				type = grid
+				values  = Add_Painting_Sub.ID
+	 			row = 16
+	 			column = 1   
+				width = medium
+			)
+			Final_Painting_Yes
+			(
+				type = grid
+				values  = Add_Painting_Sub.ID
+	 			row = 17
+	 			column = 1   
+				width = medium
+			)
+			YesSurface
+			(
+				type = grid
+				values  = Add_Surface_Sub.ID
+	 			row = 18
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "education-books-46"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		print template
+			{
+				Project_Scope_of_Work
+				{
+						displayname = "Project Scope of Work"
+						content = {"layout":"1","pageNumberOption":null,"orientation":"null","images":[{"fileName":"1609965200861_Logo_resized.png","imageId":"img_11123371749999933","imageType":"upload","fileId":"5748327000000034003"}],"isFooterEnabled":false,"containerStyle":"","mainLayout":[{"elements":[{"type":"columns","element":{"split":"32,68","id":"u_elem_10281615999999922","elemStyle":"background-color: rgb(245, 245, 245); padding: 10px 10px 0 10px","collayouts":[{"colElements":[{"type":"columns","element":{"split":"3,97","id":"u_elem_10281888999999937","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_10281910300000018","fields":[],"content":"<div style=\"\"><p><br /><\/p><\/div>"}}]},{"colElements":[{"type":"image","element":{"imageId":"img_11123371749999933","size":"NONE","src":"https://creator.zoho.com/appbuilder/jayleen_targetpainting/painting-contracting/downLoadImage?imgFileId=5748327000000034003&imgFileName=1609965200861_Logo_resized.png","captionMargin":"0px auto","alt":"","caption":"","id":"u_elem_10281913499999937","align":"left","elemStyle":"border: 0px solid rgb(169, 169, 169); margin-top: 5px; width: 100%; padding-left: 6px","formCompId":""}}]}]}}]},{"colElements":[{"type":"columns","element":{"split":"97,3","id":"u_elem_1028191525000002","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_10281941300000035","fields":[],"content":"<div style=\"\" spellcheck=\"false\"><p\n            style=\"text-align: right\"><span><span><b><font\n        style=\"font-size: 16px\"><\/font><\/b><\/span><\/span><\/p><span>\n\n<span><p\n        class=\"MsoNormal\" style=\"text-align: right\"><b><span\n              lang=\"EN-US\"><font\n        style=\"font-size: 16px\">Target Painting &amp; Contracting Inc.<\/font><\/span><\/b><\/p><p\n        class=\"MsoNormal\" style=\"text-align: right\"><b><span\n        lang=\"EN-US\"><font><br /><\/font><\/span><\/b><\/p><p\n        class=\"MsoNormal\" style=\"text-align: right\"><b><span\n        lang=\"EN-US\">708 Boston Post Road<\/span><\/b><\/p><p\n        class=\"MsoNormal\" style=\"text-align: right\"><b><span\n            lang=\"EN-US\">Sudbury, MA 01776<\/span><\/b><b><span\n        lang=\"EN-US\"><\/span><\/b><\/p><p class=\"MsoNormal\"\n            style=\"text-align: right\"><b><span\n          lang=\"EN-US\">(978)798-4002<\/span><\/b><span\n          lang=\"EN-US\"><span>&nbsp;<\/span><\/span><span\n            lang=\"EN-US\">l<span>&nbsp;<\/span><\/span><b><span\n          lang=\"EN-US\">targetpainting.com<\/span><\/b><span\n        lang=\"EN-US\"><\/span><\/p><p class=\"MsoNormal\"\n            style=\"text-align: right\"><b><span\n      lang=\"EN-US\">HIC License# 177081<\/span><\/b><\/p><\/span><div\n    style=\"text-align: right\"><br /><\/div>\n\n<\/span><p\n          style=\"text-align: right\"><span><span><font style=\"font-size: 16px\"><br /><\/font><\/span><\/span><\/p><\/div>"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_10281941700000025","fields":[],"content":"<div style=\"\"><p><br /><\/p><\/div>"}}]}]}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_10281941950000037","elemStyle":"background-color: rgb(240, 240, 240); border-top: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); padding: 10px","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_10281959649999917","fields":[],"content":"<div style=\"\"><p style=\"text-align: center\"><span><font\n            style=\"font-size: 18px\">\n\n<b><span\n                    lang=\"EN-US\"><font><span><b><span lang=\"EN-US\" style=\"font-size: 18px\">Project Scope of Work<\/span><\/b><\/span><\/font><\/span><\/b>\n\n<\/font><\/span><br /><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_10281980150000018","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_10281978499999968","fields":[],"content":"<div style=\"\"><br /><\/div>"}}]}]}},{"type":"columns","element":{"split":"50,50","id":"u_elem_10282196249999979","elemStyle":"background-color: rgb(240, 240, 240); border-top: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); padding: 20px 0","collayouts":[{"colElements":[{"id":"u_elem_95076569832511421","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Primary Contact","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Primary_Contact","labelTextStyle":"","compFields":["prefix","first_name","last_name","suffix"]}},{"id":"u_elem_95076569832524830","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Address","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Address","labelTextStyle":"","compFields":["address_line_1","address_line_2","district_city","state_province","postal_Code","country"]}},{"id":"u_elem_95076569832527519","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Email","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Email","labelTextStyle":""}}]},{"colElements":[{"id":"u_elem_95076569832530884","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Cell Phone","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Phone_Number1","labelTextStyle":""}},{"id":"u_elem_95076569832533332","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Alt Phone","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Phone_Number","labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_10282573499999999","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_10282572700000019","fields":[],"content":"<div style=\"\"><hr style=\"border-color: rgb(240, 240, 240)\" /><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_18248701049999944","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_182930425999999","height":"25"}},{"type":"text","element":{"id":"u_elem_25516330000013113","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><h1\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n        style=\"font-size: 16px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><p\n        class=\"MsoNormal\" style=\"\"><b style=\"\"><span lang=\"EN-US\"\n              style=\"\"><font style=\"font-size: 16px\">Carpentry\n&amp; Repairs<\/font><\/span><\/b><\/p>\n\n\n\n\n\n<\/font><\/h1><\/div>"}},{"type":"text","element":{"Fields":[{"Label_Name":"Material"}],"id":"u_elem_6768527250000043","content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"font-size: 14px\"><font\n        style=\"\">The following to be replaced using<\/font><span\n        style=\"color: rgb(0, 0, 0); font-family: Lato, sans-serif; font-weight: 400; font-style: normal\">&nbsp;<\/span><span\n        style=\"color: rgb(0, 0, 0); font-family: Lato, sans-serif; font-weight: 400; font-style: normal\">${Material}<\/span><span style=\"color: rgb(0, 0, 0); font-family: Lato, sans-serif; font-weight: 400; font-style: normal\">&nbsp;materials unless otherwise noted.<\/span><\/font><\/p><\/div>"}},{"id":"u_elem_95076569832545295","type":"lookupfields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","related_Form":"Add_Carpentry_Sub","labelText":"Carpentry","wrapperStyle":"","labelStyle":"width: 50%; display: none; background-color: rgb(89, 89, 89)","Label_Name":"Carpentry","refFields":[{"valueStyle":"    ","fieldLayoutType":"2","labelText":"Area","labelStyle":"    ","Label_Name":"Area"},{"valueStyle":"    ","fieldLayoutType":"2","labelText":"Description","labelStyle":"    ","Label_Name":"Description"},{"valueStyle":"    ","fieldLayoutType":"2","labelText":"Floor","labelStyle":"    ","Label_Name":"Floor"},{"valueStyle":"width: 300px; height: 100px","fieldLayoutType":"2","labelText":"Image","labelStyle":"    ","Label_Name":"Image"}],"labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_10830922999999893","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_23146359999998822","height":"25"}},{"type":"text","element":{"id":"u_elem_10830873000000429","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n    style=\"font-size: 14px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/font><\/p><p\n    class=\"MsoNormal\" style=\"\"><font style=\"\"><span lang=\"EN-US\"\n          style=\"\"><font\n    style=\"font-size: 16px\">Any debris\ngenerated as part of the above described carpentry and repairs will be removed\nfrom the property by Target Painting &amp; Contracting Inc. upon project\ncompletion.<\/font><\/span><\/font><\/p><font style=\"\">\n\n\n\n\n\n<\/font><p><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_1426830850000115","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_14268273000000045","height":"25"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_1489742350000015","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_14897402000000875","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n    style=\"font-size: 16px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/p><p\n    class=\"MsoNormal\" style=\"\"><font style=\"font-size: 16px\"><b\n          style=\"\"><span lang=\"EN-US\"\n    style=\"\">Surface Washing\n<\/span><\/b><\/font><\/p><font style=\"\"><font\n      style=\"font-size: 14px\">\n\n<\/font><p class=\"MsoNormal\" style=\"\"><b\n          style=\"\"><span lang=\"EN-US\" style=\"\"><font\n      style=\"font-size: 14px\">Pre-wet any plants and vegetation around\nareas being washed to prevent chemicals from absorbing into plants. <\/font><\/span><\/b><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\"><font\n      style=\"font-size: 14px\">Apply\nJomax and bleach solution to areas with visible mold and mildew using a pump\nsprayer and hand scrub areas as needed to ensure mold and mildew spores are\nproperly removed from surface before painting begins.<\/font><\/span><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\"><font\n      style=\"font-size: 14px\">Power\nwash house after surfaces containing mold and mildew are treated to remove\nadditional dirt and surface contaminants and ensure house is properly cleaned\nand free of debris before painting begins.<\/font><\/span><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\" style=\"\"><font style=\"font-size: 14px\">Power\nwash exterior surfaces of gutters and downspouts and remove debris from inside\nof gutters &amp; downspouts as needed.<\/font><\/span><\/p>\n\n\n\n\n\n<\/font><p><\/p><\/div>"}},{"id":"u_elem_95076569832565297","type":"fields","element":{"valueStyle":"width: 70%","valueTextStyle":"","fieldLayoutType":"2","delimiter":"comma","labelText":"Surface Washing","wrapperStyle":"","labelStyle":"width: 30%","Label_Name":"Surface_Washing","labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_1854603000000061","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_18546006000001216","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n    style=\"font-size: 16px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/font><\/p><p\n    class=\"MsoNormal\" style=\"\"><font style=\"\"><b style=\"\"><span\n          lang=\"EN-US\" style=\"\"><font\n    style=\"font-size: 16px\">Surface Preparation\n&amp; Sanding<\/font><\/span><\/b><\/font><\/p><font\n      style=\"\">\n\n<p class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\"><font\n      style=\"font-size: 14px\">Scrape\nall surfaces being painted by hand to remove visibly loose and peeling paint\nfrom surfaces.<\/font><\/span><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\"><font\n      style=\"font-size: 14px\">Sand\nall areas where scraping was performed using palm sanders and fine grit sand\npaper to taper rough edges and prevent future peeling.<\/font><\/span><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><span lang=\"EN-US\" style=\"\"><font style=\"font-size: 14px\">Caulk all gaps in siding and trim using\npremium grade siliconized latex caulking to prevent moisture penetration and\nrot.<\/font><\/span><\/p>\n\n\n\n\n\n<\/font><p><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_2116238400000002","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_211623700000011","height":"25"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_2155861200000072","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_21558587999999872","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n    style=\"font-size: 16px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/font><\/p><p\n    class=\"MsoNormal\" style=\"\"><font style=\"\"><b style=\"\"><span\n          lang=\"EN-US\" style=\"\"><font\n    style=\"font-size: 16px\">Priming,\nPainting, &amp; Staining Specification<\/font><\/span><\/b><\/font><\/p><font\n      style=\"\"><font style=\"font-size: 14px\">\n\n<\/font><p\n      class=\"MsoNormal\" style=\"\"><b><span lang=\"EN-US\"><font\n      style=\"font-size: 14px\">Apply\n(1) coat Benjamin Moore Fresh Start oil primer to bare wood where scraping was\nperformed to seal surfaces and ensure proper adhesion of finish paint. <\/font><\/span><\/b><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"\"><b style=\"\"><span lang=\"EN-US\"\n            style=\"\"><font style=\"font-size: 14px\">Apply (2) coats Benjamin Moore Regal Select paint to the\nfollowing surfaces <\/font><\/span><\/b><\/p>\n\n\n\n\n\n<\/font><p><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_26475416500000574","elemStyle":"text-align: left","collayouts":[{"colElements":[{"id":"u_elem_95076569832572405","type":"lookupfields","element":{"valueStyle":"width: 50%; text-align: left","valueTextStyle":"","fieldLayoutType":"2","related_Form":"Add_Painting_Sub","labelText":"YesPainting","wrapperStyle":"","labelStyle":"width: 50%; display: none; background-color: rgb(89, 89, 89)","Label_Name":"Final_Painting_Yes","refFields":[{"valueStyle":"width: 50%; text-align: left","fieldLayoutType":"2","labelText":"Area","labelStyle":"width: 50%; text-align: left","Label_Name":"Area"},{"valueStyle":"width: 50%; text-align: left","fieldLayoutType":"2","labelText":"Notes","labelStyle":"width: 50%; text-align: left","Label_Name":"Notes"}],"labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_29598445000010543","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_295980750000017","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n    style=\"font-size: 16px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/font><\/p><p\n    class=\"MsoNormal\" style=\"\"><font style=\"\"><b style=\"\"><span\n          lang=\"EN-US\" style=\"\"><font\n    style=\"font-size: 16px\">Apply (1) coat Benjamin Moore Arborcoat Stain\nto the following surfaces <\/font><\/span><\/b><\/font><\/p><font style=\"\">\n\n\n\n\n\n<\/font><p><\/p><\/div>"}},{"type":"columns","element":{"split":"100","id":"u_elem_1411984850000008","elemStyle":"","collayouts":[{"colElements":[{"id":"u_elem_95076569832580550","type":"lookupfields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","related_Form":"Add_Surface_Sub","labelText":"YesSurface","wrapperStyle":"","labelStyle":"width: 50%; display: none; background-color: rgb(89, 89, 89)","Label_Name":"YesSurface","refFields":[{"valueStyle":"width: 50%; text-align: left","fieldLayoutType":"2","labelText":"Area","labelStyle":"width: 50%","Label_Name":"Area"},{"valueStyle":"width: 50%; text-align: left","fieldLayoutType":"2","labelText":"Notes","labelStyle":"width: 50%","Label_Name":"Notes"}],"labelTextStyle":""}}]}]}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_2569169000000693","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_4695312000000558","height":"25"}},{"type":"text","element":{"id":"u_elem_25690950000003795","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n        style=\"\"><font\n    style=\"font-size: 14px\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/font><\/p><p\n    class=\"MsoListParagraph\" style=\"\"><font style=\"\"><b style=\"\"><span\n          lang=\"EN-US\" style=\"\"><font\n    style=\"font-size: 14px\">Pricing Does Not Include Painting the Following Surfaces<\/font><\/span><\/b><\/font><\/p><font style=\"\">\n\n\n\n\n\n<\/font><p><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_14316944500000682","elemStyle":"","collayouts":[{"colElements":[{"id":"u_elem_95076569832589034","type":"lookupfields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","related_Form":"Add_Painting_Sub","labelText":"NoList","wrapperStyle":"","labelStyle":"width: 50%; display: none; background-color: rgb(89, 89, 89)","Label_Name":"Final_Painting_No","refFields":[{"valueStyle":"        text-align: left        ","fieldLayoutType":"2","labelText":"Area","labelStyle":"        text-align: left        ","Label_Name":"Area"}],"labelTextStyle":""}}]}]}}],"id":1}],"resize":"A4","themeFont":"ntent-wrapper builderContent builder_body_outer_wrapper recordSummarybuilder","templateStyle":"text-align: left; width: 793.7px; margin: 0px; padding: 30px","isHeaderEnabled":false,"version":"2"}
+				}
+			}
+		}
+		default list All_Project_Specifications
+		{
+			displayName = "All Project Specifications"
+			print template = Project_Scope_of_Work
+			show all rows from Project_Specifications    
+			(
+				Primary_Contact  as "Primary Contact"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Secondary_Contact  as "Secondary Contact"
+	 			(
+	      			displayformat = [first_name1+""+prefix1+""+last_name1+""+suffix1]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Phone_Number1 as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Source_of_Lead as "Source of Lead"
+				Email
+				Notes
+				Overall_Notes as "Overall Notes"
+				ID
+				Quotations
+				Material
+				Lines
+				Surface_Washing as "Surface Washing"
+			)
+			options
+			(
+				icon = "design-web-design"
+	 		)
+			custom actions
+			(
+				"Fill Quotations"
+				(
+	  			workflow = Fill_Quotations1
+				show action in edit record menu = true
+				)
+			)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Primary_Contact as "Primary Contact"
+							Secondary_Contact as "Secondary Contact"
+							Phone_Number as "Phone"
+							Phone_Number1 as "Phone"
+							Address
+							Source_of_Lead as "Source of Lead"
+							Email
+							ID
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+								"Fill Quotations"
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Primary_Contact as "Primary Contact"
+							Secondary_Contact as "Secondary Contact"
+							Phone_Number as "Phone"
+							Phone_Number1 as "Phone"
+							Address
+							Source_of_Lead as "Source of Lead"
+							Email
+							Notes
+							Overall_Notes as "Overall Notes"
+							Quotations
+							Material
+							Lines
+							Surface_Washing as "Surface Washing"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Quotations
+	{
+		icon = "business-notes"
+		form Add_Quotation_Sub
+		{
+			displayname = "Add Quotation Sub"
+			success message = "Quotation Added Successfully"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				height = 75px
+	 			row = 1
+	 			column = 1   
+				width = 300px
+			)
+			Price
+			(
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "tech-2-p-add"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Quotations
+		{
+			displayName = "All Quotations"
+   			hide = true
+			show all rows from Add_Quotation_Sub    
+			(
+				Price
+				Description
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Price
+							Description
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Price
+							Description
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Quotations1
+	{
+		displayname= "Quotations"
+		icon = "business-notes"
+		form Fill_Quotations
+		{
+			displayname = "Fill Quotations"
+			success message = "Quotation Filled Successfully"
+			field alignment = left
+					hide = true
+			Basic_Informations
+			(
+				type = section
+				displayname = "Basic Informations"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Project_ID
+			(
+    			type = text
+				displayname = "Project ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Client_Name
+			(
+    			type = text
+				displayname = "Client Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Email
+			(
+    			type = email
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Project_Address
+			(
+    			type = address
+				displayname = "Project Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Estimated_Start_Date
+			(
+    			type = text
+				displayname = "Estimated Start Date"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Estimated_Project_Duration
+			(
+    			type = text
+				displayname = "Estimated Project Duration"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Painting
+			(
+				type = grid
+				values  = Add_Quotation_Sub.ID
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Carpentry_Repairs
+			(
+				type = grid
+				displayname = "Carpentry & Repairs"
+				values  = Add_Quotation_Sub.ID
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Discounts
+			(
+				type = grid
+				values  = Add_Quotation_Sub.ID
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Additional_Costs
+			(
+				type = grid
+				displayname = "Additional Costs"
+				values  = Add_Quotation_Sub.ID
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Optional_Lines
+			(
+				type = grid
+				displayname = "Optional Lines"
+				values  = Add_Quotation_Sub.ID
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Basic_Costs
+			(
+				type = section
+				displayname = "Basic Costs"
+				visibility = true
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			Total_Painting
+			(
+				displayname = "Total Painting"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Total_Carpentry_Repairs
+			(
+				displayname = "Total Carpentry & Repairs"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Total_Discounts
+			(
+				displayname = "Total Discounts"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Total_Additonal_Costs
+			(
+				displayname = "Total Additonal Costs"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Total_Costs
+			(
+				type = section
+				displayname = "Total Costs"
+				visibility = true
+	 			row = 8
+	 			column = 0   
+				width = medium
+			)
+			Total_Project_Investment
+			(
+				displayname = "Total Project Investment"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			must have Valid_Until
+			(
+    			type = text
+				displayname = "Valid Until"
+	 			row = 8
+	 			column = 2   
+				width = medium
+			)
+			Sction_3
+			(
+				type = section
+				displayname = "Section 3"
+	 			row = 9
+	 			column = 0   
+				width = medium
+			)
+			Final_Project_Investment
+			(
+				displayname = "Final Project Investment"
+				type = USD
+				format = commadotwestern
+				initial value = 0
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			must have Payment_Schedule
+			(
+				type = grid
+				displayname = "Payment Schedule"
+				values  = Payment_Steps_Sub.ID
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Section
+			(
+				type = section
+	 			row = 11
+	 			column = 0   
+				width = medium
+			)
+			must have Draft_Purchase_Agreement
+			(
+				type = radiobuttons
+				displayname = "Draft Purchase Agreement  & Project Scope Of Work"
+				values = {"Create", "Not yet"}
+				layout = 2
+	 			row = 11
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 12
+	 			column = 0   
+				width = medium
+			)
+			deal_ID
+			(
+				type = number
+				maxchar = 19
+	 			row = 12
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "design-2-bucket"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Fill"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		print template
+			{
+				SPRING_2021_PURCHASE_AGREEMENT
+				{
+						displayname = "SPRING 2021 PURCHASE AGREEMENT"
+						content = {"layout":"1","pageNumberOption":null,"orientation":"portrait","images":[{"fileName":"1609965200861_Logo_resized.png","imageId":"img_45353567500000645","imageType":"upload","fileId":"5748327000000034003"}],"isFooterEnabled":false,"containerStyle":"","mainLayout":[{"elements":[{"type":"columns","element":{"split":"31,69","id":"u_elem_44637268500000937","elemStyle":"background-color: rgb(245, 245, 245); padding: 10px 10px 0 10px","collayouts":[{"colElements":[{"type":"columns","element":{"split":"7,93","id":"u_elem_4463992750000034","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_4464014299999981","fields":[],"content":"<div style=\"\"><p><br /><\/p><\/div>"}}]},{"colElements":[{"type":"image","element":{"imageId":"img_45353567500000645","size":"F","src":"https://creator.zoho.com/appbuilder/jayleen_targetpainting/painting-contracting/downLoadImage?imgFileId=5748327000000034003&imgFileName=1609965200861_Logo_resized.png","parWidth":"100%","captionMargin":"0px auto","alt":"","caption":"","id":"u_elem_4464016450000054","align":"left","elemStyle":"border: 0px solid rgb(169, 169, 169); margin-top: 5px; width: 100%; padding-left: 6px","formCompId":""}}]}]}}]},{"colElements":[{"type":"columns","element":{"split":"100","id":"u_elem_4464017750000057","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_44640426000001025","fields":[],"content":"<div style=\"padding-left: 0px; padding-right: 20px\"\n    spellcheck=\"false\"><p style=\"text-align: right\"><span><span><b><font\n      style=\"font-size: 16px\"><\/font><\/b><\/span><\/span><\/p><span>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<p\n      class=\"MsoNormal\" style=\"text-align: right\"><b><span\n            lang=\"EN-US\"><font\n      style=\"font-size: 16px\">Target Painting &amp; Contracting Inc. <\/font><\/span><\/b><\/p><p\n      class=\"MsoNormal\" style=\"text-align: right\"><b><span\n            lang=\"EN-US\"><font\n      style=\"font-size: 16px\"><br /><\/font><\/span><\/b><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"text-align: right\"><b><span\n      lang=\"EN-US\">708 Boston Post Road<\/span><\/b><\/p>\n\n<p\n      class=\"MsoNormal\" style=\"text-align: right\"><b><span\n          lang=\"EN-US\">Sudbury, MA 01776<\/span><\/b><b><span\n      lang=\"EN-US\"> <\/span><\/b><\/p>\n\n<p class=\"MsoNormal\"\n          style=\"text-align: right\"><b><span\n        lang=\"EN-US\">(978)798-4002<\/span><\/b><span\n        lang=\"EN-US\"> <\/span><span lang=\"EN-US\">l\n<\/span><b><span\n        lang=\"EN-US\">targetpainting.com<\/span><\/b><span\n      lang=\"EN-US\"><\/span><\/p>\n\n<p class=\"MsoNormal\"\n          style=\"text-align: right\"><b><span\n    lang=\"EN-US\">HIC License# 177081<\/span><\/b><\/p>\n\n\n\n\n\n<\/span><p\n          style=\"text-align: right\"><span><span><font style=\"font-size: 16px\"><br /><\/font><\/span><\/span><\/p><\/div>"}}]}]}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_44640432000000146","elemStyle":"background-color: rgb(240, 240, 240); border-top: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); padding: 10px","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_28132440000001225","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"text-align: center; color: rgb(0, 0, 0); font-weight: 400; font-style: normal\"><font\n        style=\"\"><font style=\"font-size: 18px\">\n\n<b style=\"\"><span\n            lang=\"EN-US\" style=\"\"><font style=\"font-size: 18px\">SPRING 2021 PURCHASE AGREEMENT<\/font><\/span><\/b><\/font>\n\n<\/font><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_4464083200000023","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_4464081700000097","fields":[],"content":"<div style=\"\"><br /><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_446408500000005","elemStyle":"padding:10px","collayouts":[{"colElements":[{"id":"u_elem_11469045602063020","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Client Name","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Client_Name","labelTextStyle":""}},{"id":"u_elem_11469045602078856","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Project Address","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Project_Address","labelTextStyle":"","compFields":["address_line_1","address_line_2","district_city","state_province","postal_Code","country"]}},{"id":"u_elem_11469045602083818","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Estimated Project Duration","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Estimated_Project_Duration","labelTextStyle":""}},{"id":"u_elem_11469045602088300","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Estimated Start Date","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Estimated_Start_Date","labelTextStyle":""}},{"type":"text","element":{"id":"u_elem_44642892500000016","fields":[],"content":"<div style=\"\"><p><br /><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"10,80,10","id":"u_elem_3041675099999993","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_31099677499999234","height":"58"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_3041669499999989","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"text-align: center; color: rgb(0, 0, 0); font-weight: 400; font-style: normal\"><font\n            style=\"font-size: 16px\"><span>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<i><span lang=\"EN-US\">The above listed <b>Estimated Start<\/b> <b>Date<\/b> is an approximation and is used for planning purposes only.\nTarget Painting &amp; Contracting cannot be held responsible for delays caused\nby weather or other unforeseen circumstances before or during the project.<\/span><\/i>\n\n\n\n<\/span><\/font><\/p><\/div>"}}]},{"colElements":[{"type":"spacer","element":{"id":"u_elem_31380983499999274","height":"58"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_4464290200000105","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_4464289550000103","fields":[],"content":"<div style=\"\"><br /><\/div>"}}]}]}},{"type":"columns","element":{"split":"37,63","id":"u_elem_4464293800000014","elemStyle":"background-color: rgb(240, 240, 240); border-top: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); padding: 20px 0","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_23010551000002306","height":"113"}}]},{"colElements":[{"id":"u_elem_11469045602118339","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Total Painting","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Total_Painting","labelTextStyle":""}},{"id":"u_elem_11469045602123361","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Total Carpentry & Repairs","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Total_Carpentry_Repairs","labelTextStyle":""}},{"id":"u_elem_11469045602127575","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Total Discounts","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Total_Discounts","labelTextStyle":""}},{"id":"u_elem_11469045602131692","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Total Project Investment","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Total_Project_Investment","labelTextStyle":""}},{"id":"u_elem_11469045602135810","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Additional Price to Upgrade to Benjamnin Moore Aura Paint ***Includes 60 Month Warranty***","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Total_Additonal_Costs","labelTextStyle":""}},{"type":"text","element":{"Fields":[{"Label_Name":"Valid_Until"}],"id":"u_elem_4464606150000036","content":"<div style=\"padding-top: 0px\"><p\n      style=\"text-align: left\">*Total project investment valid until&nbsp;<span>${Valid_Until}<\/span><span style=\"color: rgb(0, 0, 0); font-family: Lato, sans-serif; font-size: 12px; font-weight: 400; font-style: normal\">&nbsp;<\/span><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_24952442499998142","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_25661272000000463","height":"25"}}]}]}},{"type":"columns","element":{"split":"41,59","id":"u_elem_44646081499999855","elemStyle":"background-color: rgb(255, 255, 255); padding: 20px 0px","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_446465240000005","fields":[],"content":"<div style=\"\"><p><br /><\/p><\/div>"}}]},{"colElements":[{"id":"u_elem_11469045602153304","type":"fields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"2","labelText":"Final Project Investment","wrapperStyle":"","labelStyle":"width: 50%","Label_Name":"Final_Project_Investment","labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_1084511690000014","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_3421973899999866","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><h1\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 12px\">*Optional line items<\/font><\/h1><\/div>"}},{"id":"u_elem_11469045602167797","type":"lookupfields","element":{"valueStyle":"width: 50%","valueTextStyle":"","fieldLayoutType":"1","related_Form":"Add_Quotation_Sub","labelText":"Extra Lines","wrapperStyle":"","labelStyle":"width: 50%; background-color: rgb(89, 89, 89); display: none","Label_Name":"Optional_Lines","refFields":[{"valueStyle":"                                          ","fieldLayoutType":"2","labelText":"Description","labelStyle":"                                          ","Label_Name":"Description"},{"valueStyle":"                                          ","fieldLayoutType":"2","labelText":"Price","labelStyle":"                                          ","Label_Name":"Price"}],"labelTextStyle":""}},{"type":"spacer","element":{"id":"u_elem_44974568999998155","height":"25"}},{"type":"spacer","element":{"id":"u_elem_11137151150000282","height":"25"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_4464823049999977","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_4464822600000043","fields":[],"content":"<div style=\"\"><hr style=\"border-color: rgb(240, 240, 240)\" /><\/div>"}}]}]}},{"type":"columns","element":{"split":"10,80,10","id":"u_elem_36212784499999543","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_3789971300000034","height":"42"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_3621276249999937","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"text-align: center; color: rgb(0, 0, 0); font-weight: 400; font-style: normal\"><font\n              style=\"font-size: 16px\"><span>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<b><i><span lang=\"EN-US\">Unless\notherwise noted pricing assumes all line items will be completed during the\nsame project. If not, additional set up charges may apply to each line item.<\/span><\/i><\/b>\n\n\n\n<\/span><\/font><\/p><\/div>"}}]},{"colElements":[{"type":"spacer","element":{"id":"u_elem_38255508499999996","height":"42"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_3974633099999919","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_5814814149999875","height":"150"}},{"type":"text","element":{"id":"u_elem_39746284999999625","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 10px 0px 0px\"\n    spellcheck=\"false\"><p\n      style=\"color: rgb(0, 0, 0); font-style: normal; text-align: left\"><font\n    style=\"\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/font><\/p><p class=\"MsoNormal\"\n      style=\"\"><font style=\"\"><u style=\"\"><span lang=\"EN-US\"\n            style=\"\"><font style=\"font-size: 16px\"><b>2021 Spring Project Payment Schedule<\/b><\/font><\/span><\/u><\/font><\/p><p><\/p><\/div>"}},{"type":"columns","element":{"split":"8,5,4,83","id":"u_elem_59680130000000645","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_6607221000000209","height":"25"}}]},{"colElements":[{"id":"u_elem_11469045602216136","type":"fields","element":{"Lookup_Label_Name":"Payment_Schedule","valueStyle":"width: 50%","valueTextStyle":"font-size: 16px; font-weight: bold","fieldLayoutType":"1","labelText":"Percentage","wrapperStyle":"","labelStyle":"width: 50%; display: none","Label_Name":"Percentage","labelTextStyle":""}}]},{"colElements":[{"id":"u_elem_11469045602222680","type":"fields","element":{"Lookup_Label_Name":"Payment_Schedule","valueStyle":"width: 50%","valueTextStyle":"font-size: 16px; font-weight: bold","fieldLayoutType":"1","labelText":"text","wrapperStyle":"","labelStyle":"width: 50%; display: none","Label_Name":"text","labelTextStyle":""}}]},{"colElements":[{"id":"u_elem_11469045602228475","type":"fields","element":{"Lookup_Label_Name":"Payment_Schedule","valueStyle":"width: 50%","valueTextStyle":"font-size: 16px; font-weight: bold","fieldLayoutType":"1","labelText":"Payment","wrapperStyle":"","labelStyle":"width: 50%; display: none","Label_Name":"Payment","labelTextStyle":""}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_239455850000013","elemStyle":"","collayouts":[{"colElements":[{"type":"columns","element":{"split":"100","id":"u_elem_7659981499999958","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_28006819999999607","height":"25"}}]}]}}]}]}}]}]}},{"type":"columns","element":{"split":"12,76,12","id":"u_elem_45688473999999405","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_4815407750000013","height":"74"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_4568843300000008","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><p\n      style=\"text-align: center; color: rgb(0, 0, 0); font-weight: 400; font-style: normal\"><font\n            style=\"font-size: 16px\"><span>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<i><span lang=\"EN-US\"><span>\n\n<i><span>Your warranty period will begin upon receipt of final payment. The final payment must be received within 5 days of the finish date to activate your warranty.<\/span><\/i>\n\n<\/span><\/span><\/i>\n\n\n\n<\/span><\/font><\/p><\/div>"}}]},{"colElements":[{"type":"spacer","element":{"id":"u_elem_4843373849999916","height":"74"}}]}]}},{"type":"columns","element":{"split":"8,84,8","id":"u_elem_493480979999993","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_51914224000000104","height":"88"}}]},{"colElements":[{"type":"spacer","element":{"id":"u_elem_5487704999999842","height":"150"}},{"type":"text","element":{"id":"u_elem_4934805449999985","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"\n    spellcheck=\"false\"><h5 align=\"center\"><font\n            style=\"font-size: 16px\"><b><u><span\n    lang=\"EN-US\">Additional Work Orders<\/span><\/u><\/b><\/font><\/h5><font\n        style=\"font-size: 16px\">\n\n<i><div style=\"text-align: center\"><i\n            style=\"background-color: rgba(0, 0, 0, 0)\"><span lang=\"EN-US\">Any work that is not described in the contract documents that is either\nthe result of unforeseen conditions or is added by the owner shall be called an\nadditional work order.&nbsp; All additional\nwork orders must be <b><u>approved in\nwriting<\/u><\/b> by owner and contractor prior to that work being scheduled.<\/span><\/i><\/div><\/i><\/font><p><\/p><\/div>"}},{"type":"text","element":{"id":"u_elem_5685048450000031","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font\n    style=\"font-size: 16px\"><span>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<\/span><\/font><\/p><p\n    align=\"center\" class=\"MsoNormal\"><font\n          style=\"font-size: 16px\"><i><span\n        lang=\"EN-US\">This\nagreement supersedes all conversations, statements, and agreements expressed or\nimplied between the parties, their agents and representatives.<\/span><\/i><span\n    lang=\"EN-US\"><\/span><\/font><\/p><font style=\"font-size: 16px\">\n\n\n\n\n\n<\/font><p><\/p><\/div>"}}]},{"colElements":[{"type":"spacer","element":{"id":"u_elem_5244223749999946","height":"88"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_4833926999999676","elemStyle":"","collayouts":[{"colElements":[]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_8333099299999885","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_8333096200000145","height":"50"}}]}]}},{"type":"columns","element":{"split":"50,50","id":"u_elem_8388965949999983","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_8388963100000401","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Owner Signature<\/font><\/p><\/div>"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_9070674449999933","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Date<\/font><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_8548833400000003","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_8548832350000157","height":"25"}}]}]}},{"type":"columns","element":{"split":"50,50","id":"u_elem_8587476599999936","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_858747320000024","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Owner Signature<\/font><\/p><\/div>"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_92113777999999","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Date<\/font><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_8705320350000402","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_8705319149999996","height":"25"}}]}]}},{"type":"columns","element":{"split":"50,50","id":"u_elem_877896390000009","elemStyle":"","collayouts":[{"colElements":[{"type":"text","element":{"id":"u_elem_8778959749999922","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Target Painting Company Inc.<\/font><\/p><\/div>"}}]},{"colElements":[{"type":"text","element":{"id":"u_elem_9364184550000355","fields":[],"content":"<div style=\"background: rgba(0, 0, 0, 0); padding: 0px 0px 0px 50px\"><p\n      style=\"color: rgb(0, 0, 0); font-weight: 400; font-style: normal; text-align: left\"><font style=\"font-size: 16px\">Date<\/font><\/p><\/div>"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_1038722219999996","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_10387212399999844","height":"25"}}]}]}},{"type":"columns","element":{"split":"100","id":"u_elem_228186314999999","elemStyle":"","collayouts":[{"colElements":[{"type":"spacer","element":{"id":"u_elem_22818610499997158","height":"25"}}]}]}}],"id":1}],"resize":"A4","themeFont":"ntent-wrapper builderContent builder_body_outer_wrapper recordSummarybuilder","templateStyle":"text-align: left; width: 793.7px; margin: 0px; padding: 30px","isHeaderEnabled":false,"version":"2"}
+				}
+			}
+		}
+		default list All_Quotations1
+		{
+			displayName = "All Quotations"
+			print template = SPRING_2021_PURCHASE_AGREEMENT
+			show all rows from Fill_Quotations    
+			(
+				Total_Painting as "Total Painting"
+				Total_Carpentry_Repairs as "Total Carpentry & Repairs"
+				Total_Project_Investment as "Total Project Investment"
+				Final_Project_Investment as "Final Project Investment"
+				Total_Discounts as "Total Discounts"
+				Total_Additonal_Costs as "Total Additonal Costs"
+				Client_Name as "Client Name"
+				Project_Address  as "Project Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Estimated_Project_Duration as "Estimated Project Duration"
+				Email
+				Draft_Purchase_Agreement as "Draft Purchase Agreement  & Project Scope Of Work"
+				deal_ID
+				Estimated_Start_Date as "Estimated Start Date"
+				Valid_Until as "Valid Until"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Client_Name as "Client Name"
+							Total_Painting as "Total Painting"
+							Total_Carpentry_Repairs as "Total Carpentry & Repairs"
+							Total_Project_Investment as "Total Project Investment"
+							Final_Project_Investment as "Final Project Investment"
+							Total_Discounts as "Total Discounts"
+							Total_Additonal_Costs as "Total Additonal Costs"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Client_Name as "Client Name"
+							Email
+							Project_Address as "Project Address"
+							Estimated_Project_Duration as "Estimated Project Duration"
+							Total_Painting as "Total Painting"
+							Total_Carpentry_Repairs as "Total Carpentry & Repairs"
+							Total_Discounts as "Total Discounts"
+							Total_Project_Investment as "Total Project Investment"
+							Total_Additonal_Costs as "Total Additonal Costs"
+							Final_Project_Investment as "Final Project Investment"
+							Draft_Purchase_Agreement as "Draft Purchase Agreement  & Project Scope Of Work"
+							deal_ID
+							Estimated_Start_Date as "Estimated Start Date"
+							Valid_Until as "Valid Until"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Painting_Subs
+	{
+		displayname= "Painting Subs"
+		icon = "design-2-canvas"
+		form Add_Painting_Sub
+		{
+			displayname = "Add Painting Sub"
+			success message = "Painting Sub Added Successfully"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Area
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Options
+			(
+				type = radiobuttons
+				values = {"Yes", "No"}
+				layout = 3
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Make_Line_Optional
+			(
+				type = radiobuttons
+				displayname = "Make Line Optional"
+				values = {"Yes"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "media-1-polaroid-add"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Painting_Subs
+		{
+			displayName = "All Painting Subs"
+   			hide = true
+			show all rows from Add_Painting_Sub    
+			(
+				Options
+				Area
+				Notes
+				Make_Line_Optional as "Make Line Optional"
+			)
+			options
+			(
+				icon = "sport-cardio"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Options
+							Area
+							Notes
+							Make_Line_Optional as "Make Line Optional"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Options
+							Area
+							Notes
+							Make_Line_Optional as "Make Line Optional"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Surface_Subs
+	{
+		displayname= "Surface Subs"
+		icon = "location-pin-add"
+		form Add_Surface_Sub
+		{
+			displayname = "Add Surface Sub"
+			success message = "Surface Sub Added Successfully"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Area
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Options
+			(
+				type = radiobuttons
+				values = {"Yes", "No"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "design-shapes"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Surface_Subs
+		{
+			displayName = "All Surface Subs"
+   			hide = true
+			show all rows from Add_Surface_Sub    
+			(
+				Area
+				Options
+				Notes
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Area
+							Options
+							Notes
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Area
+							Options
+							Notes
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Payment_Steps_Sub
+	{
+		displayname= "Payment Steps Sub"
+		icon = "shopping-cash-register"
+		form Payment_Steps_Sub
+		{
+			displayname = "Payment Steps Sub"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Payment
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			text
+			(
+    			type = text
+				initial value = "%"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Percentage
+			(
+    			type = percentage
+				initial value = 0%
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "shopping-cash-register"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list Payment_Steps_Sub_Report
+		{
+			displayName = "Payment Steps Sub Report"
+   			hide = true
+			show all rows from Payment_Steps_Sub    
+			(
+				Payment
+				Percentage
+				text
+			)
+			options
+			(
+				icon = "shopping-cash-register"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Payment
+							Percentage
+							text
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Payment
+							Percentage
+							text
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	functions
+	{
+ 			float adjustTotalProjectInvestment(float Total_Painting, float Total_Carpentry_Repairs, float Total_Discounts)
+			{
+				return Total_Painting + Total_Carpentry_Repairs - Total_Discounts;
+			}
+ 			float adjustFinalProjectInvestment(float totalProjectInvestment, float totalAdditionalCosts)
+			{
+				return totalProjectInvestment + totalAdditionalCosts;
+			}
+ 			list uploadDocument(int ID, string clientName, string projectID)
+			{
+				pdf_file1 = invokeurl
+			[
+				url :"https://creatorapp.zohopublic.com/jayleen_targetpainting/painting-contracting/record-pdf/All_Project_Specifications/" + projectID + "?privateLink=vQAd0XkwpHhNx2yqghbnEdHazpFOresJHetmSYjBSeHOgzRsPFJkUGEp8jvJf12ZKg7m6p3us0z0wYf1pnjn5ZC2etNDrvb7Pe1Q"
+				type :GET
+			];
+				pdf_file2 = invokeurl
+			[
+				url :"https://creatorapp.zohopublic.com/jayleen_targetpainting/painting-contracting/record-pdf/All_Quotations1/" + ID.toString() + "?privateLink=EAAyFzbfvGax5BdhSs80VzeD5SpdYMEuCZs7G207vEfKPPQfn8m6mDJqp8tnY2wUb4VzJ6h3JbrpxAANevdyRdCGaunkt3BZznFE"
+				type :GET
+			];
+				listFiles = List();
+				listFiles.add(pdf_file1);
+				listFiles.add(pdf_file2);
+				dataMap = Map();
+				dataMap.put("requests",{"request_name":clientName});
+				requestMap = Map();
+				requestMap.put("data",dataMap);
+				res = zoho.sign.createDocument(listFiles,requestMap);
+				myList = List();
+				myList.add(res.get("requests").get("request_id").toLong());
+				myList.add(res.get("requests").get("document_ids").get(0).get("document_id").toLong());
+				return myList;
+			}
+	}
+
+
+
+		workflow
+		{
+		form
+		{
+			Hide_Quotations as "Hide Quotations"
+			{
+				type =  form
+				form = Project_Specifications
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Quotations;
+										hide Lines;
+										hide Final_Painting_Yes;
+										hide YesSurface;
+										hide Final_Painting_No;
+						)
+					}
+				}
+
+			}
+			Adjust_Total_Painting_Pri as "Adjust Total Painting Price"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on user input of Painting.Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											totalPaintingPrice = 0;
+										for each  paintingRow in input.Painting
+										{
+											totalPaintingPrice = totalPaintingPrice + paintingRow.Price;
+										}
+										input.Total_Painting = totalPaintingPrice;
+										input.Total_Project_Investment = thisapp.adjustTotalProjectInvestment(input.Total_Painting,input.Total_Carpentry_Repairs,input.Total_Discounts);
+										input.Final_Project_Investment = thisapp.adjustFinalProjectInvestment(input.Total_Project_Investment,input.Total_Additonal_Costs);
+						)
+					}
+				}
+
+			}
+			Adjust_Total_Carpentry_Pr as "Adjust Total Carpentry Price"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on user input of Carpentry_Repairs.Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											totalCarpentryPrice = 0;
+										for each  carpentryRow in input.Carpentry_Repairs
+										{
+											totalCarpentryPrice = totalCarpentryPrice + carpentryRow.Price;
+										}
+										input.Total_Carpentry_Repairs = totalCarpentryPrice;
+										input.Total_Project_Investment = thisapp.adjustTotalProjectInvestment(input.Total_Painting,input.Total_Carpentry_Repairs,input.Total_Discounts);
+										input.Final_Project_Investment = thisapp.adjustFinalProjectInvestment(input.Total_Project_Investment,input.Total_Additonal_Costs);
+						)
+					}
+				}
+
+			}
+			Hide_Project_ID as "Hide Project ID"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Project_ID;
+										hide Payment_Schedule.text;
+										hide deal_ID;
+						)
+					}
+				}
+
+			}
+			Adjust_Total_Discounts as "Adjust Total Discounts"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on user input of Discounts.Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											totalDiscounts = 0;
+										for each  discountsRow in input.Discounts
+										{
+											totalDiscounts = totalDiscounts + discountsRow.Price;
+										}
+										input.Total_Discounts = totalDiscounts;
+										input.Total_Project_Investment = thisapp.adjustTotalProjectInvestment(input.Total_Painting,input.Total_Carpentry_Repairs,input.Total_Discounts);
+										input.Final_Project_Investment = thisapp.adjustFinalProjectInvestment(input.Total_Project_Investment,input.Total_Additonal_Costs);
+						)
+					}
+				}
+
+			}
+			Adjust_Total_Additional_C as "Adjust Total Additional Costs"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on user input of Additional_Costs.Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											totalAdditionalCosts = 0;
+										for each  additionalCostRow in input.Additional_Costs
+										{
+											totalAdditionalCosts = totalAdditionalCosts + additionalCostRow.Price;
+										}
+										input.Total_Additonal_Costs = totalAdditionalCosts;
+										input.Final_Project_Investment = thisapp.adjustFinalProjectInvestment(input.Total_Project_Investment,input.Total_Additonal_Costs);
+						)
+					}
+				}
+
+			}
+			Add_Carpentry_Repairs1 as "Add Carpentry & Repairs"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											project = Project_Specifications[ID == input.Project_ID.toLong()];
+										for each  line in project.Carpentry
+										{
+											rowLine = Fill_Quotations.Carpentry_Repairs();
+											rowLine.Description=line.Area + "-" + line.Description;
+											input.Carpentry_Repairs.insert(rowLine);
+										}
+						)
+					}
+				}
+
+			}
+			Add_Painting_Lines2 as "Add Painting Lines"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											project = Project_Specifications[ID == input.Project_ID.toLong()];
+										for each  line in project.Painting
+										{
+											if(line.Options == "Yes")
+											{
+												if(line.Make_Line_Optional == null)
+												{
+													rowLine = Fill_Quotations.Painting();
+													rowLine.Description=line.Area;
+													input.Painting.insert(rowLine);
+												}
+											}
+										}
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											project = Project_Specifications[ID == input.Project_ID.toLong()];
+										for each  line in project.Painting
+										{
+											if(line.Options == "Yes")
+											{
+												if(line.Make_Line_Optional == "Yes")
+												{
+													rowLine = Fill_Quotations.Painting();
+													rowLine.Description=line.Area;
+													input.Optional_Lines.insert(rowLine);
+												}
+											}
+										}
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											project = Project_Specifications[ID == input.Project_ID.toLong()];
+										for each  line in project.Miscellaneous_Painting
+										{
+											if(line.Options == "Yes")
+											{
+												rowLine = Fill_Quotations.Painting();
+												rowLine.Description=line.Area;
+												input.Painting.insert(rowLine);
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Add_Discounts1 as "Add Discounts"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row1 = Fill_Quotations.Discounts();
+										row1.Description="Spring 2021 Scheduling Discount";
+										row1.Price=0;
+										input.Discounts.insert(row1);
+						)
+					}
+				}
+
+			}
+			Add_Additonal_Costs1 as "Add Additonal Costs"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row1 = Fill_Quotations.Additional_Costs();
+										row1.Description="Additional Price to Upgrade to Benjamnin Moore Aura Paint ***Includes 60 Month Warranty***";
+										row1.Price=0;
+										input.Additional_Costs.insert(row1);
+						)
+					}
+				}
+
+			}
+			Send_to_Zoho_Sign as "Send to Zoho Sign"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Draft_Purchase_Agreement == "Create")
+										{
+											myList = thisapp.uploadDocument(input.ID,input.Client_Name,input.Project_ID);
+											requestID = myList.get(0);
+											recipient = Map();
+											recipient.put("recipient_name",input.Client_Name);
+											recipient.put("recipient_email",input.Email);
+											recipient.put("action_type","SIGN");
+											recipient2 = Map();
+											recipient2.put("recipient_name","Jayleen Vincuilla");
+											recipient2.put("recipient_email","jayleen@targetpainting.com");
+											recipient2.put("action_type","SIGN");
+											recipient_list = List();
+											recipient_list.add(recipient);
+											recipient_list.add(recipient2);
+											actions_map = Map();
+											actions_map.put("actions",recipient_list);
+											request_map = Map();
+											request_map.put("requests",actions_map);
+											field_map = Map();
+											field_map.put("data",request_map);
+											response = zoho.sign.updateDocument(requestID,field_map);
+										}
+						)
+					}
+				}
+
+			}
+			Fill_Basic_Info as "Fill Basic Info"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Client_Name = Project_Specifications[ID == input.Project_ID.toLong()].Primary_Contact;
+										input.Email = Project_Specifications[ID == input.Project_ID.toLong()].Email;
+										input.Project_Address = Project_Specifications[ID == input.Project_ID.toLong()].Address;
+						)
+					}
+				}
+
+			}
+			Add_Painting_Lines as "Add Painting Lines"
+			{
+				type =  form
+				form = Project_Specifications
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											listOfNames = List();
+										listOfNames = {"Full Primer coat","Siding","Trim, Soffits, Fascia","Window & Door Trim ","Window Sashes","Window Mullions","Storm Windows","Basement Windows","Front Entry Doors","Side & Rear Doors","Screen/Storm Doors","Door Thresholds","Garage Doors","Shutters","Gutters","Downspouts","Bulkhead","Chimney","Entry Hand Rails","Deck Railings","Deck Lattice","Screen Porch Trim","Porch Floor","Porch Ceiling","Foundation","Sheds","Accessories"};
+										for each  name in listOfNames
+										{
+											row1 = Project_Specifications.Painting();
+											row1.Area=name;
+											input.Painting.insert(row1);
+										}
+						)
+					}
+				}
+
+			}
+			Add_Surface_Lines as "Add Surface Lines"
+			{
+				type =  form
+				form = Project_Specifications
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											listOfNames = List();
+										listOfNames = {"Deck Floor","Deck Railings"};
+										for each  name in listOfNames
+										{
+											row1 = Project_Specifications.Painting_Specifications();
+											row1.Area=name;
+											input.Painting_Specifications.insert(row1);
+										}
+						)
+					}
+				}
+
+			}
+			Add_Lines_For_CRM as "Add Lines For CRM"
+			{
+				type =  form
+				form = Project_Specifications
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Lines == "No")
+										{
+											listOfNames = List();
+											listOfNames = {"Full Primer coat","Siding","Trim, Soffits, Fascia","Window & Door Trim ","Window Sashes","Window Mullions","Storm Windows","Basement Windows","Front Entry Doors","Side & Rear Doors","Screen/Storm Doors","Door Thresholds","Garage Doors","Shutters","Gutters","Downspouts","Bulkhead","Chimney","Entry Hand Rails","Deck Floor","Deck Railings","Deck Lattice","Screen Porch Trim","Porch Floor","Porch Ceiling","Foundation","Sheds","Accessories"};
+											for each  name in listOfNames
+											{
+												row1 = Project_Specifications.Painting();
+												row1.Area=name;
+												input.Painting.insert(row1);
+											}
+											listOfNames2 = List();
+											listOfNames2 = {"Deck Floor","Deck Railings"};
+											for each  name in listOfNames2
+											{
+												row2 = Project_Specifications.Painting_Specifications();
+												row2.Area=name;
+												input.Painting_Specifications.insert(row2);
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Adjust_Final_Painting_Sec1 as "Adjust Final Painting Sections"
+			{
+				type =  form
+				form = Project_Specifications
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Final_Painting_Yes.clear();
+										for each  yesItem in input.Painting
+										{
+											if(yesItem.Options == "Yes")
+											{
+												row1 = Project_Specifications.Final_Painting_Yes();
+												row1.Area=yesItem.Area;
+												row1.Notes=yesItem.Notes;
+												input.Final_Painting_Yes.insert(row1);
+											}
+										}
+										for each  yesItem2 in input.Miscellaneous_Painting
+										{
+											if(yesItem2.Options == "Yes")
+											{
+												row2 = Project_Specifications.Final_Painting_Yes();
+												row2.Area=yesItem2.Area;
+												row2.Notes=yesItem2.Notes;
+												input.Final_Painting_Yes.insert(row2);
+											}
+										}
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											input.Final_Painting_No.clear();
+										for each  noItem in input.Painting
+										{
+											if(noItem.Options == "No" || noItem.Options == Null)
+											{
+												row1 = Project_Specifications.Final_Painting_No();
+												row1.Area=noItem.Area;
+												input.Final_Painting_No.insert(row1);
+											}
+										}
+										for each  noItem2 in input.Painting_Specifications
+										{
+											if(noItem2.Options == "No" || noItem2.Options == Null)
+											{
+												row2 = Project_Specifications.Final_Painting_No();
+												row2.Area=noItem2.Area;
+												input.Final_Painting_No.insert(row2);
+											}
+										}
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											input.YesSurface.clear();
+										for each  yesItem in input.Painting_Specifications
+										{
+											if(yesItem.Options == "Yes")
+											{
+												row3 = Project_Specifications.YesSurface();
+												row3.Area=yesItem.Area;
+												row3.Notes=yesItem.Notes;
+												input.YesSurface.insert(row3);
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Add_Payment_Schedule_Line as "Add Payment Schedule Lines"
+			{
+				type =  form
+				form = Fill_Quotations
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											listOfNames = List();
+										listOfNames = {"Scheduling Deposit Due at Agreement","Progress Payment Due at Completion of House Priming","Final Payment Due Upon Completion of Punch List"};
+										for each  name in listOfNames
+										{
+											row1 = Fill_Quotations.Payment_Schedule();
+											row1.Payment=name;
+											input.Payment_Schedule.insert(row1);
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+		functions
+		{
+			Fill_Quotations1 as "Fill Quotations"
+			{
+				type =  functions
+				form = Project_Specifications
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("https://creatorapp.zoho.com/jayleen_targetpainting/painting-contracting/#Form:Fill_Quotations" + "?Project_ID=" + input.ID,"same window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 1
+		
+		icons = true
+		icons style = outline
+	}
+
+	
+}
