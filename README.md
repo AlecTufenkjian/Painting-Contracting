@@ -4,4 +4,4 @@ This is a fully functional web application for a construction company. It allows
 
 Painting___Contracting.ds is the source code of the Zoho project.
 
-Please view the result in "Showcase" folder!
+Please [click here](https://docs.google.com/presentation/d/15VlDTK0Fp7Eg4YCNvljSIr56j2OBCt9PygoLuKlyTs0/edit?usp=sharing) to view the results!
